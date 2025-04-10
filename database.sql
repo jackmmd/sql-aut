@@ -1,5 +1,5 @@
--- Tabla de usuarios
-CREATE TABLE usuarios (
+-- Tabla de users
+CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
@@ -7,22 +7,22 @@ CREATE TABLE usuarios (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabla de categorías
-CREATE TABLE categorias (
+-- Tabla de categories
+CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     description TEXT
 );
 
--- Tabla de productos
+-- Tabla de products
 CREATE TABLE productos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     description TEXT,
     price DECIMAL(10, 2) NOT NULL,
-    id_categoria INT,
-    id_usuario INT,
+    id_category INT,
+    id_user INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_categoria) REFERENCES categorias(id) ON DELETE SET NULL,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE SET NULL
+    FOREIGN KEY (id_category) REFERENCES categories(id) ON DELETE SET NULL,
+    FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE SET NULL
 );
